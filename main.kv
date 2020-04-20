@@ -1,0 +1,321 @@
+<MyLabel@Label>:
+    size_hint_x: .4
+    text_size: self.size
+    halign: 'right'
+    valign: 'middle'
+    padding_x: self.width/50
+
+<MyBoxLayout@BoxLayout>:
+    size_hint_x: .6
+
+<PktLabel@Label>:
+    size_hint_x: .8
+    text_size: self.size
+    halign: 'left'
+    valign: 'middle'
+    padding_x: self.width/50
+    input_type: 'number'
+
+<PktTextInput@TextInput>:
+    size_hint_x: .2
+    text_size: self.size
+    halign: 'center'
+    valign: 'middle'
+    padding_x: self.width/50
+
+<Calculator>:
+    plowed_fields: plowed_fields
+    fenced_pastures: fenced_pastures
+    grain: grain
+    vegetables: vegetables
+    sheep: sheep
+    wild_boar: wild_boar
+    cows: cows
+
+    unused_fields: unused_fields
+    fenced_stables: fenced_stables
+    clay_rooms: clay_rooms
+    stone_rooms: stone_rooms
+    family_members: family_members
+    begging_cards: begging_cards
+    card_points: card_points
+    bonus_points: bonus_points
+
+    GridLayout:
+        cols: 2
+        anchor_y: 'top'
+        size: root.width, root.height
+        pos: 0, 0
+        padding: '5dp', '5dp'
+
+        Button:
+            text: 'RESET'
+            on_release: root.reset()
+            background_color: [1, 0, 0, 1]
+            size_hint_x: .4
+
+        Label:
+            text: '{} pkt'.format('0' if root.points == '' else root.points)
+            size_hint_x: .6
+
+        MyLabel:
+            text: 'Niewykorzystane obszary:'
+        MyBoxLayout:
+            PktTextInput:
+                id: unused_fields
+                input_filter: 'int'
+            PktLabel:
+                text: 'x -1 pkt'
+
+        MyLabel:
+            text: 'Ogrodzone obory:'
+        MyBoxLayout:
+            PktTextInput:
+                id: fenced_stables
+                input_filter: 'int'
+            PktLabel:
+                text: 'x 1 pkt'
+
+        MyLabel:
+            text: 'Izby glinianej chaty:'
+        MyBoxLayout:
+            PktTextInput:
+                id: clay_rooms
+                input_filter: 'int'
+            PktLabel:
+                text: 'x 1 pkt'
+
+        MyLabel:
+            text: 'Izby kamiennego domu:'
+        MyBoxLayout:
+            PktTextInput:
+                id: stone_rooms
+                input_filter: 'int'
+            PktLabel:
+                text: 'x 2 pkt'
+
+        MyLabel:
+            text: 'Członkowie rodziny:'
+        MyBoxLayout:
+            PktTextInput:
+                id: family_members
+                input_filter: 'int'
+            PktLabel:
+                text: 'x 3 pkt'
+
+        MyLabel:
+            text: 'Karty żebrania:'
+        MyBoxLayout:
+            PktTextInput:
+                id: begging_cards
+                input_filter: 'int'
+            PktLabel:
+                text: 'x -3 pkt'
+
+        MyLabel:
+            text: 'Punkty za karty:'
+        MyBoxLayout:
+            PktTextInput:
+                id: card_points
+                input_filter: 'int'
+            PktLabel:
+                text: 'pkt'
+
+        MyLabel:
+            text: 'Punkty specjalne:'
+        MyBoxLayout:
+            PktTextInput:
+                id: bonus_points
+                input_filter: 'int'
+            PktLabel:
+                text: 'pkt'
+
+        MyLabel:
+            text: ''
+
+        MyBoxLayout:
+            Label:
+                text: '-1'
+            Label:
+                text: '1'
+            Label:
+                text: '2'
+            Label:
+                text: '3'
+            Label:
+                text: '4'
+
+        MyLabel:
+            text: 'Zaorane pola:'
+        MyBoxLayout:
+            id: plowed_fields
+            ToggleButton:
+                text: '0-1'
+                text_hint: '-1'
+                group: 'plowed_fields'
+            ToggleButton:
+                text: '2'
+                text_hint: '1'
+                group: 'plowed_fields'
+            ToggleButton:
+                text: '3'
+                text_hint: '2'
+                group: 'plowed_fields'
+            ToggleButton:
+                text: '4'
+                text_hint: '3'
+                group: 'plowed_fields'
+            ToggleButton:
+                text: '5+'
+                text_hint: '4'
+                group: 'plowed_fields'
+
+        MyLabel:
+            text: 'Ogrodzone pastwiska:'
+        MyBoxLayout:
+            id: fenced_pastures
+            ToggleButton:
+                text: '0'
+                text_hint: '-1'
+                group: 'fenced_pastures'
+            ToggleButton:
+                text: '1'
+                text_hint: '1'
+                group: 'fenced_pastures'
+            ToggleButton:
+                text: '2'
+                text_hint: '2'
+                group: 'fenced_pastures'
+            ToggleButton:
+                text: '3'
+                text_hint: '3'
+                group: 'fenced_pastures'
+            ToggleButton:
+                text: '4+'
+                text_hint: '4'
+                group: 'fenced_pastures'
+
+        MyLabel:
+            text: 'Zboże:'
+        MyBoxLayout:
+            id: grain
+            ToggleButton:
+                text: '0'
+                text_hint: '-1'
+                group: 'grain'
+            ToggleButton:
+                text: '1-3'
+                text_hint: '1'
+                group: 'grain'
+            ToggleButton:
+                text: '4-5'
+                text_hint: '2'
+                group: 'grain'
+            ToggleButton:
+                text: '6-7'
+                text_hint: '3'
+                group: 'grain'
+            ToggleButton:
+                text: '8+'
+                text_hint: '4'
+                group: 'grain'
+
+        MyLabel:
+            text: 'Warzywa:'
+        MyBoxLayout:
+            id: vegetables
+            ToggleButton:
+                text: '0'
+                text_hint: '-1'
+                group: 'vegetables'
+            ToggleButton:
+                text: '1'
+                text_hint: '1'
+                group: 'vegetables'
+            ToggleButton:
+                text: '2'
+                text_hint: '2'
+                group: 'vegetables'
+            ToggleButton:
+                text: '3'
+                text_hint: '3'
+                group: 'vegetables'
+            ToggleButton:
+                text: '4+'
+                text_hint: '4'
+                group: 'vegetables'
+
+        MyLabel:
+            text: 'Owce:'
+        MyBoxLayout:
+            id: sheep
+            ToggleButton:
+                text: '0'
+                text_hint: '-1'
+                group: 'sheep'
+            ToggleButton:
+                text: '1-3'
+                text_hint: '1'
+                group: 'sheep'
+            ToggleButton:
+                text: '4-5'
+                text_hint: '2'
+                group: 'sheep'
+            ToggleButton:
+                text: '6-7'
+                text_hint: '3'
+                group: 'sheep'
+            ToggleButton:
+                text: '8+'
+                text_hint: '4'
+                group: 'sheep'
+
+        MyLabel:
+            text: 'Dziki:'
+        MyBoxLayout:
+            id: wild_boar
+            ToggleButton:
+                text: '0'
+                text_hint: '-1'
+                group: 'wild_boar'
+            ToggleButton:
+                text: '1-2'
+                text_hint: '1'
+                group: 'wild_boar'
+            ToggleButton:
+                text: '3-4'
+                text_hint: '2'
+                group: 'wild_boar'
+            ToggleButton:
+                text: '5-6'
+                text_hint: '3'
+                group: 'wild_boar'
+            ToggleButton:
+                text: '7+'
+                text_hint: '4'
+                group: 'wild_boar'
+
+        MyLabel:
+            text: 'Krowy:'
+        MyBoxLayout:
+            id: cows
+            ToggleButton:
+                text: '0'
+                text_hint: '-1'
+                group: 'cows'
+            ToggleButton:
+                text: '1'
+                text_hint: '1'
+                group: 'cows'
+            ToggleButton:
+                text: '2-3'
+                text_hint: '2'
+                group: 'cows'
+            ToggleButton:
+                text: '4-5'
+                text_hint: '3'
+                group: 'cows'
+            ToggleButton:
+                text: '6+'
+                text_hint: '4'
+                group: 'cows'
